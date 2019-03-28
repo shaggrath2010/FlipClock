@@ -6,11 +6,15 @@ FlipClock.Dom = FlipClock.Dom || {};
  * @returns {*}
  */
 FlipClock.Dom.getAll = function (selector) {
-    const elements = document.querySelectorAll(selector);
-    if (elements.length < 1) {
+    try{
+        const elements = document.querySelectorAll(selector);
+        if (elements.length < 1) {
+            return null;
+        }
+        return elements;
+    }catch (e) {
         return null;
     }
-    return elements;
 };
 
 
@@ -20,11 +24,16 @@ FlipClock.Dom.getAll = function (selector) {
  * @returns {*}
  */
 FlipClock.Dom.get = function (selector) {
-    const element = document.querySelector(selector);
-    if (element === null) {
+    try{
+        const element = document.querySelector(selector);
+        if (element === null) {
+            return null;
+        }
+        return element;
+    }catch (e) {
         return null;
     }
-    return element;
+
 };
 
 /**

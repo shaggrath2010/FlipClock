@@ -325,11 +325,15 @@ _FlipClock.Dom = _FlipClock.Dom || {};
  * @returns {*}
  */
 _FlipClock.Dom.getAll = function (selector) {
-	var elements = document.querySelectorAll(selector);
-	if (elements.length < 1) {
+	try {
+		var elements = document.querySelectorAll(selector);
+		if (elements.length < 1) {
+			return null;
+		}
+		return elements;
+	} catch (e) {
 		return null;
 	}
-	return elements;
 };
 
 /**
@@ -338,11 +342,15 @@ _FlipClock.Dom.getAll = function (selector) {
  * @returns {*}
  */
 _FlipClock.Dom.get = function (selector) {
-	var element = document.querySelector(selector);
-	if (element === null) {
+	try {
+		var element = document.querySelector(selector);
+		if (element === null) {
+			return null;
+		}
+		return element;
+	} catch (e) {
 		return null;
 	}
-	return element;
 };
 
 /**
@@ -467,12 +475,12 @@ _FlipClock.Dom.remove = function (element) {
 /*jshint smarttabs:true */
 
 /**
- * FlipClock.js
- *
- * @author     Justin Kimbrell
- * @copyright  2013 - Objective HTML, LLC
- * @licesnse   http://www.opensource.org/licenses/mit-license.php
- */
+* FlipClock.js
+*
+* @author     Justin Kimbrell
+* @copyright  2013 - Objective HTML, LLC
+* @licesnse   http://www.opensource.org/licenses/mit-license.php
+*/
 
 //
 
@@ -483,7 +491,7 @@ _FlipClock.Dom.remove = function (element) {
  * all other FlockClock.Face classes.
  *
  * @param 	object  The parent FlipClock.Factory object
- * @param 	object  An object of properties to override the default	
+ * @param 	object  An object of properties to override the default
  */
 
 _FlipClock.Face = _FlipClock.Base.extend({
@@ -516,7 +524,7 @@ _FlipClock.Face = _FlipClock.Base.extend({
   * Constructor
   *
   * @param 	object  The parent FlipClock.Factory object
-  * @param 	object  An object of properties to override the default	
+  * @param 	object  An object of properties to override the default
   */
 
 	constructor: function constructor(factory, options) {
@@ -540,7 +548,7 @@ _FlipClock.Face = _FlipClock.Base.extend({
   * Creates a jQuery object used for the digit divider
   *
   * @param	mixed 	The divider label text
-  * @param	mixed	Set true to exclude the dots in the divider. 
+  * @param	mixed	Set true to exclude the dots in the divider.
   *					If not set, is false.
   */
 
