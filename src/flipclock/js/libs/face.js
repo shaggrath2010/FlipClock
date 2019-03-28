@@ -8,7 +8,7 @@
  * @licesnse   http://www.opensource.org/licenses/mit-license.php
  */
 	
-(function($) {
+//
 	
 	"use strict";
 	
@@ -93,20 +93,20 @@
 				dots = '';	
 			}
 
-			label = this.factory.localize(label);
 
-			var html = [
-				'<span class="'+this.factory.classes.divider+' '+(css ? css : '').toLowerCase()+'">',
-					'<span class="'+this.factory.classes.label+'">'+(label ? label : '')+'</span>',
-					dots,
-				'</span>'
-			];	
-			
-			var $html = $(html.join(''));
+			var html = document.createElement('span');
+            html.classList.add(this.factory.classes.divider);
+            if(css){
+                html.classList.add(css.toLowerCase());
+			}
+            label = this.factory.localize(label);
 
-			this.dividers.push($html);
-
-			return $html;
+			html.innerHTML = [
+                '<span class="'+this.factory.classes.label+'">'+(label ? label : '')+'</span>',
+                dots,
+			].join('');
+			this.dividers.push(html);
+			return html;
 		},
 		
 		/**
@@ -221,23 +221,22 @@
 		 
 		flip: function(time, doNotAddPlayClass) {
 			var t = this;
+            time.forEach(function(digit, i){
+                var list = t.lists[i];
 
-			$.each(time, function(i, digit) {
-				var list = t.lists[i];
+                if(list) {
+                    if(!doNotAddPlayClass && digit != list.digit) {
+                        list.play();
+                    }
 
-				if(list) {
-					if(!doNotAddPlayClass && digit != list.digit) {
-						list.play();	
-					}
-
-					list.select(digit);
-				}	
-				else {
-					t.addDigit(digit);
-				}
-			});
+                    list.select(digit);
+                }
+                else {
+                    t.addDigit(digit);
+                }
+            });
 		}
 					
 	});
 	
-}(jQuery));
+//

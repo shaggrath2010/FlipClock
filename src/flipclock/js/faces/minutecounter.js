@@ -1,51 +1,48 @@
-(function($) {
-		
+
+/**
+ * Minute Counter Clock Face
+ *
+ * This class will generate a minute counter for FlipClock.js. A
+ * minute counter will track minutes and seconds. If an hour is
+ * reached, the counter will reset back to 0. (4 digits max)
+ *
+ * @param  object  The parent FlipClock.Factory object
+ * @param  object  An object of properties to override the default
+ */
+
+FlipClock.MinuteCounterFace = FlipClock.HourlyCounterFace.extend({
+
+	clearExcessDigits: false,
+
 	/**
-	 * Minute Counter Clock Face
-	 *
-	 * This class will generate a minute counter for FlipClock.js. A
-	 * minute counter will track minutes and seconds. If an hour is 
-	 * reached, the counter will reset back to 0. (4 digits max)
+	 * Constructor
 	 *
 	 * @param  object  The parent FlipClock.Factory object
-	 * @param  object  An object of properties to override the default	
+	 * @param  object  An object of properties to override the default
 	 */
-	 
-	FlipClock.MinuteCounterFace = FlipClock.HourlyCounterFace.extend({
 
-		clearExcessDigits: false,
+	constructor: function(factory, options) {
+		this.base(factory, options);
+	},
 
-		/**
-		 * Constructor
-		 *
-		 * @param  object  The parent FlipClock.Factory object
-		 * @param  object  An object of properties to override the default	
-		 */
-		 
-		constructor: function(factory, options) {
-			this.base(factory, options);
-		},
-		
-		/**
-		 * Build the clock face	
-		 */
-		 
-		build: function() {
-			this.base(true, this.factory.time.getMinuteCounter());
-		},
-		
-		/**
-		 * Flip the clock face
-		 */
-		 
-		flip: function(time, doNotAddPlayClass) {
-			if(!time) {
-				time = this.factory.time.getMinuteCounter();
-			}
+	/**
+	 * Build the clock face
+	 */
 
-			this.base(time, doNotAddPlayClass);
+	build: function() {
+		this.base(true, this.factory.time.getMinuteCounter());
+	},
+
+	/**
+	 * Flip the clock face
+	 */
+
+	flip: function(time, doNotAddPlayClass) {
+		if(!time) {
+			time = this.factory.time.getMinuteCounter();
 		}
 
-	});
-	
-}(jQuery));
+		this.base(time, doNotAddPlayClass);
+	}
+
+});
