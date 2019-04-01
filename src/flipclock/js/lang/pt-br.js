@@ -1,27 +1,23 @@
-(function($) {
+/**
+ * FlipClock Portuguese Language Pack
+ *
+ * This class will used to translate tokens into the Portuguese language.
+ *
+ */
 
-	/**
-	 * FlipClock Portuguese Language Pack
-	 *
-	 * This class will used to translate tokens into the Portuguese language.
-	 *
-	 */
+FlipClock.Lang.Portuguese = {
 
-	FlipClock.Lang.Portuguese = {
+    'years': 'Anos',
+    'months': 'Meses',
+    'days': 'Dias',
+    'hours': 'Horas',
+    'minutes': 'Minutos',
+    'seconds': 'Segundos'
 
-		'years'   : 'Anos',
-		'months'  : 'Meses',
-		'days'    : 'Dias',
-		'hours'   : 'Horas',
-		'minutes' : 'Minutos',
-		'seconds' : 'Segundos'
+};
 
-	};
+/* Create various aliases for convenience */
 
-	/* Create various aliases for convenience */
-
-	FlipClock.Lang['pt']         = FlipClock.Lang.Portuguese;
-	FlipClock.Lang['pt-br']      = FlipClock.Lang.Portuguese;
-	FlipClock.Lang['portuguese'] = FlipClock.Lang.Portuguese;
-
-}(jQuery));
+FlipClock.Lang['pt'] = FlipClock.Lang.Portuguese;
+FlipClock.Lang['pt-br'] = FlipClock.Lang.Portuguese;
+FlipClock.Lang['portuguese'] = FlipClock.Lang.Portuguese;
